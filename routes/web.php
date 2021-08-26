@@ -37,6 +37,7 @@ Route::get('/dashboard', function () {
 Route::get('meu-perfil', [CandidatosController::class,'createOrEditMyProfile'])->name('my_profile')->middleware(['auth', 'verified']);
 
 // Candidatos
+// TODO: Proteger para permitir apenas que Admins consigam utilizar estas rotas
 Route::get('candidatos')->name('candidatos')->uses('CandidatosController@index')->middleware('remember', 'auth');
 Route::get('candidatos/create', [CandidatosController::class,'create'])->name('candidatos.create')->middleware(['auth', 'verified']);
 Route::post('candidatos',[CandidatosController::class, 'store'])->name('candidatos.store')->middleware('auth');

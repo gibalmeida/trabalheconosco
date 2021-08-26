@@ -4,6 +4,7 @@ import NavLink from '../Components/NavLink';
 import React, { useState } from 'react';
 import ResponsiveNavLink from '../Components/ResponsiveNavLink';
 import { InertiaLink } from '@inertiajs/inertia-react';
+import FlashMessages from '@/Components/FlashMessages';
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -99,6 +100,7 @@ export default function Authenticated({ auth, header, children }) {
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink
                             method="post"
+                            as="button"
                             href={route('dashboard')}
                             active={route().current('dashboard')}
                         >
@@ -127,7 +129,10 @@ export default function Authenticated({ auth, header, children }) {
                 </header>
             )}
 
-            <main>{children}</main>
+            <main>
+                <FlashMessages />
+                {children}
+            </main>
         </div>
     );
 }

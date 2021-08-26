@@ -766,6 +766,9 @@ select {
 	outline-offset: 2px;
 	--tw-ring-color: transparent;
 }
+.visible {
+	visibility: visible;
+}
 .fixed {
 	position: fixed;
 }
@@ -839,6 +842,9 @@ select {
 .-mt-px {
 	margin-top: -1px;
 }
+.mb-8 {
+	margin-bottom: 2rem;
+}
 .mb-4 {
 	margin-bottom: 1rem;
 }
@@ -856,9 +862,6 @@ select {
 }
 .mt-6 {
 	margin-top: 1.5rem;
-}
-.mb-8 {
-	margin-bottom: 2rem;
 }
 .mt-1 {
 	margin-top: 0.25rem;
@@ -893,14 +896,17 @@ select {
 .h-16 {
 	height: 4rem;
 }
+.h-4 {
+	height: 1rem;
+}
+.h-2 {
+	height: 0.5rem;
+}
 .h-24 {
 	height: 6rem;
 }
 .h-6 {
 	height: 1.5rem;
-}
-.h-4 {
-	height: 1rem;
 }
 .h-10 {
 	height: 2.5rem;
@@ -929,6 +935,9 @@ select {
 .w-4 {
 	width: 1rem;
 }
+.w-2 {
+	width: 0.5rem;
+}
 .w-6 {
 	width: 1.5rem;
 }
@@ -937,6 +946,9 @@ select {
 }
 .max-w-6xl {
 	max-width: 72rem;
+}
+.max-w-3xl {
+	max-width: 48rem;
 }
 .max-w-7xl {
 	max-width: 80rem;
@@ -1102,6 +1114,14 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
 }
+.bg-green-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(16, 185, 129, var(--tw-bg-opacity));
+}
+.bg-red-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
+}
 .bg-indigo-50 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(238, 242, 255, var(--tw-bg-opacity));
@@ -1116,11 +1136,11 @@ select {
 .p-6 {
 	padding: 1.5rem;
 }
-.p-3 {
-	padding: 0.75rem;
-}
 .p-2 {
 	padding: 0.5rem;
+}
+.p-3 {
+	padding: 0.75rem;
 }
 .px-4 {
 	padding-left: 1rem;
@@ -1287,6 +1307,14 @@ select {
 .text-indigo-600 {
 	--tw-text-opacity: 1;
 	color: rgba(79, 70, 229, var(--tw-text-opacity));
+}
+.text-red-700 {
+	--tw-text-opacity: 1;
+	color: rgba(185, 28, 28, var(--tw-text-opacity));
+}
+.text-green-700 {
+	--tw-text-opacity: 1;
+	color: rgba(4, 120, 87, var(--tw-text-opacity));
 }
 .text-indigo-700 {
 	--tw-text-opacity: 1;
@@ -1488,6 +1516,14 @@ select {
 .active\:text-gray-500:active {
 	--tw-text-opacity: 1;
 	color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+.group:hover .group-hover\:text-red-800 {
+	--tw-text-opacity: 1;
+	color: rgba(153, 27, 27, var(--tw-text-opacity));
+}
+.group:hover .group-hover\:text-green-800 {
+	--tw-text-opacity: 1;
+	color: rgba(6, 95, 70, var(--tw-text-opacity));
 }
 .peer:-moz-placeholder-shown ~ .peer-placeholder-shown\:top-4 {
 	top: 1rem;

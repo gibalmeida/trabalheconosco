@@ -67,7 +67,8 @@ class CandidatosController extends Controller
 
         Candidato::create($request->validated() + ['user_id' => $userId]);
 
-        return Redirect::route('dashboard');
+        // return Redirect::route('dashboard');
+        return Redirect::back()->with('success', 'O cadastro foi criado com sucesso.');
     }
 
     /**
@@ -105,7 +106,7 @@ class CandidatosController extends Controller
     {
         $candidato->update($request->validated());
 
-        Redirect::back()->with('success', 'O cadastro foi atualizado.');
+        return Redirect::back()->with('success', 'O cadastro foi atualizado com sucesso.');
     }
 
     /**

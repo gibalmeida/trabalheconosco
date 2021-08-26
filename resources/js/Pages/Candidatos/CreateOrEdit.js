@@ -15,10 +15,8 @@ import { useForm } from "@inertiajs/inertia-react";
 import TextAreaForFloatingLabel from "@/Components/TextAreaForFloatingLabel";
 
 export default function CreateOrEdit(props) {
-    console.log(props);
     const { auth, candidato } = props;
     const { data, setData, post, put, processing, errors, reset } = useForm({
-        user_id: auth.id,
         nome: '',
         data_de_nascimento: '',
         genero: '',
@@ -59,49 +57,6 @@ export default function CreateOrEdit(props) {
         ...candidato?.data,
 
     });
-    // const { data, setData, post, processing, errors, reset } = useForm({
-    //     nome:  '',
-    //     data_de_nascimento:  '',
-    //     genero:  '',
-    //     profissao:  '',
-    //     residencia_endereco:  '',
-    //     residencia_bairro:  '',
-    //     residencia_uf:  '',
-    //     residencia_cidade:  '',
-    //     residencia_cep:  '',
-    //     telefone_principal:  '',
-    //     telefone_alternativo:  '',
-    //     habilitacao_cat_a:  false,
-    //     habilitacao_cat_b:  false,
-    //     habilitacao_cat_c:  false,
-    //     habilitacao_cat_d:  false,
-    //     habilitacao_cat_e:  false,
-    //     veiculo_proprio:  '',
-    //     estado_civil:  '',
-    //     qtde_filhos:  '',
-    //     conjuge:  '',
-    //     portador_de_necessidades_especiais:  false,
-    //     necessidades_especiais:  '',
-    //     parente_na_empresa:   false,
-    //     parente_nome:  '',
-    //     tipo_parentesco:  '',
-    //     conhecidos_na_empresa:  false,
-    //     conhecidos_nomes:  '',
-    //     auto_descricao_personalidade:  '',
-    //     porque_trabalhar_aqui:  '',
-    //     outras_informacoes:  '',
-    //     facebook_url:  '',
-    //     instagram_url:  '',
-    //     twitter_url:  '',
-    //     linkedin_url:  '',
-    //     github_url:  '',
-    //     areas_pretendidas:  '',
-    //     pretensao_salarial:  '',
-
-    //     // NOTE: When working with Laravel PUT/PATCH requests and FormData
-    //     // you SHOULD send POST request and fake the PUT request like this.
-    //     _method: candidato.id ? 'PUT' : 'POST'
-    // });    
 
     // useEffect(() => {
     //     return () => {
@@ -725,7 +680,7 @@ export default function CreateOrEdit(props) {
                         className="w-full md:w-auto justify-center"
                         processing={processing}
                     >
-                        Salvar
+                        {data.id ? 'Atualizar' : 'Salvar'}
                     </Button>
                 </div>
             </form>
