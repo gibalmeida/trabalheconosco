@@ -25,7 +25,7 @@ export default function Authenticated({ auth, header, children }) {
                                     Painel de Controle
                                 </NavLink>
                                 <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink href={route('candidatos.create')} active={route().current('candidatos.create')}>
+                                <NavLink href={route('my_profile')} active={route().current('my_profile')}>
                                     Meu cadastro
                                 </NavLink>
                             </div>
@@ -60,7 +60,7 @@ export default function Authenticated({ auth, header, children }) {
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
-                                        <Dropdown.Link href={route('candidatos.create')} method="get">Meu cadastro</Dropdown.Link>
+                                        <Dropdown.Link href={route('my_profile')} method="get" as="button">Meu cadastro</Dropdown.Link>
                                         <Dropdown.Link href={route('logout')} method="post" as="button">
                                             Sair
                                         </Dropdown.Link>

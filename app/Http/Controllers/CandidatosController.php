@@ -28,6 +28,21 @@ class CandidatosController extends Controller
         // ])
     }
 
+     /**
+     * Mostra o formulário de criação ou edição dos dados do candidato associado ao usuário autenticado.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createOrEditMyProfile()
+    {
+        if (Auth::user()->candidato) {
+            return Inertia::render('Candidatos/CreateOrEdit', [
+                'candidato' => new CandidatoResource(Auth::user()->candidato)
+            ]);
+        }
+        return Inertia::render('Candidatos/CreateOrEdit');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -47,13 +62,10 @@ class CandidatosController extends Controller
     public function store(CandidatoStoreRequest $request)
     {
 
-        // Retrieve the currently authenticated user...
-        $user = Auth::user();
+        // // Retrieve the currently authenticated user's ID...
+        $userId = Auth::id();  
 
-        // Retrieve the currently authenticated user's ID...
-        $id = Auth::id();
-
-        Candidato::create($request->validated());
+        Candidato::create($request->validated() + ['user_id' => $userId]);
 
         return Redirect::route('dashboard');
     }

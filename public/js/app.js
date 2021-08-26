@@ -3950,8 +3950,8 @@ function Authenticated(_ref) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                 className: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_NavLink__WEBPACK_IMPORTED_MODULE_2__.default, {
-                  href: route('candidatos.create'),
-                  active: route().current('candidatos.create'),
+                  href: route('my_profile'),
+                  active: route().current('my_profile'),
                   children: "Meu cadastro"
                 })
               })]
@@ -3982,8 +3982,9 @@ function Authenticated(_ref) {
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_Components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.default.Content, {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.default.Link, {
-                    href: route('candidatos.create'),
+                    href: route('my_profile'),
                     method: "get",
+                    as: "button",
                     children: "Meu cadastro"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.default.Link, {
                     href: route('logout'),

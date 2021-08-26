@@ -33,6 +33,9 @@ Route::get('/dashboard', function () {
 //     return Inertia::render('Profile');
 // })->middleware(['auth', 'verified'])->name('profile');
 
+// Meu cadastro
+Route::get('meu-perfil', [CandidatosController::class,'createOrEditMyProfile'])->name('my_profile')->middleware(['auth', 'verified']);
+
 // Candidatos
 Route::get('candidatos')->name('candidatos')->uses('CandidatosController@index')->middleware('remember', 'auth');
 Route::get('candidatos/create', [CandidatosController::class,'create'])->name('candidatos.create')->middleware(['auth', 'verified']);
