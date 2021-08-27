@@ -97,7 +97,7 @@ export default function CreateOrEdit(props) {
                 className="max-w-7xl mx-auto rounded-lg shadow-xl overflow-hidden p-2 space-y-10 bg-white mt-2"
             >
                 <FormSection value="Dados Básicos">
-                    <div className="md:flex-grow md:w-8/12  md:max-w-2xl mb-2">
+                    <div className="md:flex-grow md:w-8/12  md:max-w-2xl">
                         <FloatingLabel forInput="nome" value="Nome completo">
                             <InputForFloatingLabel
                                 type="text"
@@ -120,6 +120,7 @@ export default function CreateOrEdit(props) {
                         >
                             <InputForFloatingLabel
                                 type="date"
+                                className="pl-2 pt-4"
                                 id="data_de_nascimento"
                                 name="data_de_nascimento"
                                 value={data.data_de_nascimento}
