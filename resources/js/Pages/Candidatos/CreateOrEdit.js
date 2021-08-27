@@ -9,52 +9,51 @@ import SelectUF from "@/Components/SelectUF";
 import SelectEstadoCivil from "@/Components/SelectEstadoCivil";
 import Checkbox from "@/Components/Checkbox";
 import React, { useEffect } from "react";
-import ValidationErrors from "@/Components/ValidationErrors";
+import ValidationError from "@/Components/ValidationError";
 import { useForm } from "@inertiajs/inertia-react";
 import TextAreaForFloatingLabel from "@/Components/TextAreaForFloatingLabel";
 
 export default function CreateOrEdit(props) {
     const { candidato } = props;
     const { data, setData, post, put, processing, errors, reset } = useForm({
-        nome: '',
-        data_de_nascimento: '',
-        genero: '',
-        profissao: '',
-        residencia_endereco:  '',
-        residencia_bairro:  '',
-        residencia_uf:  '',
-        residencia_cidade:  '',
-        residencia_cep:  '',
-        telefone_principal:  '',
-        telefone_alternativo:  '',
+        nome: "",
+        data_de_nascimento: "",
+        genero: "",
+        profissao: "",
+        residencia_endereco: "",
+        residencia_bairro: "",
+        residencia_uf: "",
+        residencia_cidade: "",
+        residencia_cep: "",
+        telefone_principal: "",
+        telefone_alternativo: "",
         habilitacao_cat_a: false,
         habilitacao_cat_b: false,
         habilitacao_cat_c: false,
         habilitacao_cat_d: false,
         habilitacao_cat_e: false,
-        veiculo_proprio:  '',
-        estado_civil:  '',
-        qtde_filhos:  '',
-        conjuge:  '',
-        portador_de_necessidades_especiais:  false,
-        necessidades_especiais:  '',
-        parente_na_empresa:   false,
-        parente_nome:  '',
-        tipo_parentesco:  '',
-        conhecidos_na_empresa:  false,
-        conhecidos_nomes:  '',
-        auto_descricao_personalidade:  '',
-        porque_trabalhar_aqui:  '',
-        outras_informacoes:  '',
-        facebook_url:  '',
-        instagram_url:  '',
-        twitter_url:  '',
-        linkedin_url:  '',
-        github_url:  '',
-        areas_pretendidas:  '',
-        pretensao_salarial:  '',
+        veiculo_proprio: "",
+        estado_civil: "",
+        qtde_filhos: "",
+        conjuge: "",
+        portador_de_necessidades_especiais: false,
+        necessidades_especiais: "",
+        parente_na_empresa: false,
+        parente_nome: "",
+        tipo_parentesco: "",
+        conhecidos_na_empresa: false,
+        conhecidos_nomes: "",
+        auto_descricao_personalidade: "",
+        porque_trabalhar_aqui: "",
+        outras_informacoes: "",
+        facebook_url: "",
+        instagram_url: "",
+        twitter_url: "",
+        linkedin_url: "",
+        github_url: "",
+        areas_pretendidas: "",
+        pretensao_salarial: "",
         ...candidato?.data,
-
     });
 
     // useEffect(() => {
@@ -76,7 +75,7 @@ export default function CreateOrEdit(props) {
         e.preventDefault();
 
         if (data.id) {
-            put(route("candidatos.update", data.id))
+            put(route("candidatos.update", data.id));
         } else {
             post(route("candidatos.store"));
         }
@@ -92,7 +91,6 @@ export default function CreateOrEdit(props) {
                 </h2>
             }
         >
-            <ValidationErrors errors={errors} />
 
             <form
                 onSubmit={submit}
@@ -113,6 +111,7 @@ export default function CreateOrEdit(props) {
                                 required
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.nome} />
                     </div>
                     <div className="md:flex-grow md:w-2/12 md:max-w-xs">
                         <FloatingLabel
@@ -130,6 +129,7 @@ export default function CreateOrEdit(props) {
                                 required
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.data_de_nascimento} />
                     </div>
                     <div className="md:flex-grow md:w-2/12 md:max-w-xs">
                         <FloatingLabel forInput="genero" value="Gênero">
@@ -143,6 +143,7 @@ export default function CreateOrEdit(props) {
                                 handleChange={onHandleChange}
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.genero} />
                     </div>
 
                     <div className="md:flex-grow md:w-8/12 md:max-w-2xl">
@@ -157,6 +158,7 @@ export default function CreateOrEdit(props) {
                                 required
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.profissao} />
                     </div>
                 </FormSection>
                 <FormSection value="Endereço de Residência">
@@ -176,6 +178,7 @@ export default function CreateOrEdit(props) {
                                 required
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.residencia_endereco} />
                     </div>
                     <div className="flex-grow md:w-2/12">
                         <FloatingLabel
@@ -193,6 +196,7 @@ export default function CreateOrEdit(props) {
                                 required
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.residencia_bairro} />
                     </div>
                     <div className="flex-grow-0 md:w-3/12">
                         <FloatingLabel forInput="residencia_uf" value="Estado">
@@ -205,6 +209,7 @@ export default function CreateOrEdit(props) {
                                 required
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.residencia_uf} />
                     </div>
                     <div className="flex-grow md:w-6/12">
                         <FloatingLabel
@@ -222,12 +227,10 @@ export default function CreateOrEdit(props) {
                                 required
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.residencia_cidade} />
                     </div>
                     <div className="flex-grow md:w-1/12">
-                        <FloatingLabel
-                            forInput="residencia_cep"
-                            value="CEP"
-                        >
+                        <FloatingLabel forInput="residencia_cep" value="CEP">
                             <InputForFloatingLabel
                                 type="text"
                                 id="residencia_cep"
@@ -239,7 +242,8 @@ export default function CreateOrEdit(props) {
                                 required
                             />
                         </FloatingLabel>
-                    </div>                    
+                        <ValidationError error={errors.residencia_cep} />
+                    </div>
                 </FormSection>
                 <FormSection value="Telefones para contato">
                     <div className="flex-grow md:w-3/12">
@@ -257,6 +261,7 @@ export default function CreateOrEdit(props) {
                                 handleChange={onHandleChange}
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.telefone_principal} />
                     </div>
                     <div className="flex-grow md:w-3/12">
                         <FloatingLabel
@@ -272,6 +277,7 @@ export default function CreateOrEdit(props) {
                                 handleChange={onHandleChange}
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.telefone_alternativo} />
                     </div>
                 </FormSection>
                 <FormSection value="CNH e Veículo Próprio">
@@ -350,7 +356,7 @@ export default function CreateOrEdit(props) {
                     </div>
                     <div className="flex-grow md:w-3/12">
                         <FloatingLabel
-                            forInput="residencia-uf"
+                            forInput="veiculo_proprio"
                             value="Veículo Próprio"
                         >
                             <SelectVeiculoProprio
@@ -362,6 +368,7 @@ export default function CreateOrEdit(props) {
                                 required
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.veiculo_proprio} />
                     </div>
                 </FormSection>
                 <FormSection value="Estado Civil e Filhos">
@@ -378,6 +385,7 @@ export default function CreateOrEdit(props) {
                                 required
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.estado_civil} />
                     </div>
                     <div className="flex-grow-0 md:w-2/12">
                         <FloatingLabel
@@ -393,6 +401,7 @@ export default function CreateOrEdit(props) {
                                 handleChange={onHandleChange}
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.qtde_filhos} />
                     </div>
                     <div className="flex-grow md:w-6/12">
                         <FloatingLabel
@@ -403,12 +412,21 @@ export default function CreateOrEdit(props) {
                                 type="text"
                                 id="conjuge"
                                 name="conjuge"
-                                value={(data.estado_civil == 'casado') ? data.conjuge : ''}
+                                value={
+                                    data.estado_civil == "casado"
+                                        ? data.conjuge
+                                        : ""
+                                }
                                 placeholder="Nome do Conjuge"
                                 handleChange={onHandleChange}
-                                disabled={(data.estado_civil == "casado") ? "" : "disabled"}
+                                disabled={
+                                    data.estado_civil == "casado"
+                                        ? ""
+                                        : "disabled"
+                                }
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.conjuge} />
                     </div>
                 </FormSection>
                 <FormSection value="Necessidades Especiais">
@@ -434,12 +452,23 @@ export default function CreateOrEdit(props) {
                                 <InputForFloatingLabel
                                     id="necessidades_especiais"
                                     name="necessidades_especiais"
-                                    value={(data.portador_de_necessidades_especiais) ? data.necessidades_especiais : ''}
+                                    value={
+                                        data.portador_de_necessidades_especiais
+                                            ? data.necessidades_especiais
+                                            : ""
+                                    }
                                     placeholder="Especifique as necessidades especiais"
                                     handleChange={onHandleChange}
-                                    disabled={(data.portador_de_necessidades_especiais) ? "" : "disabled"}
+                                    disabled={
+                                        data.portador_de_necessidades_especiais
+                                            ? ""
+                                            : "disabled"
+                                    }
                                 />
                             </FloatingLabel>
+                            <ValidationError
+                                error={errors.necessidades_especiais}
+                            />
                         </div>
                     </div>
                 </FormSection>
@@ -466,27 +495,42 @@ export default function CreateOrEdit(props) {
                             <InputForFloatingLabel
                                 id="parente_nome"
                                 name="parente_nome"
-                                value={(data.parente_na_empresa) ? data.parente_nome : ''}
+                                value={
+                                    data.parente_na_empresa
+                                        ? data.parente_nome
+                                        : ""
+                                }
                                 placeholder="Nome do parente que trabalha na empresa"
                                 handleChange={onHandleChange}
-                                disabled={(data.parente_na_empresa) ? "" : "disabled"}
+                                disabled={
+                                    data.parente_na_empresa ? "" : "disabled"
+                                }
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.parente_nome} />
                     </div>
                     <div className="flex-grow md:w-4/12">
                         <FloatingLabel
                             forInput="tipo_parentesco"
                             value="Tipo de Parentesco (pai, mãe, irmão(ã), etc.)"
-                        />
-                        <InputForFloatingLabel
-                            type="text"
-                            id="tipo_parentesco"
-                            name="tipo_parentesco"
-                            value={(data.parente_na_empresa) ? data.tipo_parentesco : ''}
-                            placeholder="Tipo de Parentesco (pai, mãe, irmão(ã), etc.)"
-                            handleChange={onHandleChange}
-                            disabled={(data.parente_na_empresa) ? "" : "disabled"}
-                        />
+                        >
+                            <InputForFloatingLabel
+                                type="text"
+                                id="tipo_parentesco"
+                                name="tipo_parentesco"
+                                value={
+                                    data.parente_na_empresa
+                                        ? data.tipo_parentesco
+                                        : ""
+                                }
+                                placeholder="Tipo de Parentesco (pai, mãe, irmão(ã), etc.)"
+                                handleChange={onHandleChange}
+                                disabled={
+                                    data.parente_na_empresa ? "" : "disabled"
+                                }
+                            />
+                        </FloatingLabel>
+                        <ValidationError error={errors.tipo_parentesco} />
                     </div>
                     <div className="flex-grow w-full">
                         <Checkbox
@@ -509,12 +553,19 @@ export default function CreateOrEdit(props) {
                             <InputForFloatingLabel
                                 id="conhecidos_nomes"
                                 name="conhecidos_nomes"
-                                value={(data.conhecidos_na_empresa) ? data.conhecidos_nomes : ''}
+                                value={
+                                    data.conhecidos_na_empresa
+                                        ? data.conhecidos_nomes
+                                        : ""
+                                }
                                 placeholder="Pessoas que trabalham na empresa e lhe conhece bem"
                                 handleChange={onHandleChange}
-                                disabled={(data.conhecidos_na_empresa) ? "" : "disabled"}
+                                disabled={
+                                    data.conhecidos_na_empresa ? "" : "disabled"
+                                }
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.conhecidos_na_empresa} />
                     </div>
                 </FormSection>
                 <FormSection value="Outras Informações">
@@ -532,6 +583,7 @@ export default function CreateOrEdit(props) {
                                 handleChange={onHandleChange}
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.auto_descricao_personalidade} />
                     </div>
                     <div className="flex-grow w-full">
                         <FloatingLabel
@@ -547,6 +599,7 @@ export default function CreateOrEdit(props) {
                                 handleChange={onHandleChange}
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.porque_trabalhar_aqui} />
                     </div>
                     <div className="flex-grow w-full">
                         <FloatingLabel
@@ -562,11 +615,13 @@ export default function CreateOrEdit(props) {
                                 handleChange={onHandleChange}
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.outras_informacoes} />
                     </div>
                 </FormSection>
                 <FormSection value="Redes Sociais">
                     <div className="flex-grow w-full text-gray-500 text-center text-sm mb-2">
-                        Informe os endereços dos seus perfis nas redes sociais que você participar.
+                        Informe os endereços dos seus perfis nas redes sociais
+                        que você participar.
                     </div>
                     <div className="w-full flex-grow flex flex-col flex-wrap gap-2 md:max-h-48 ">
                         <div className="md:flex-grow">
@@ -583,6 +638,7 @@ export default function CreateOrEdit(props) {
                                     handleChange={onHandleChange}
                                 />
                             </FloatingLabel>
+                            <ValidationError error={errors.facebook_url} />
                         </div>
                         <div className="md:flex-grow">
                             <FloatingLabel
@@ -598,6 +654,7 @@ export default function CreateOrEdit(props) {
                                     handleChange={onHandleChange}
                                 />
                             </FloatingLabel>
+                            <ValidationError error={errors.instagram_url} />
                         </div>
                         <div className="md:flex-grow">
                             <FloatingLabel
@@ -613,6 +670,7 @@ export default function CreateOrEdit(props) {
                                     handleChange={onHandleChange}
                                 />
                             </FloatingLabel>
+                            <ValidationError error={errors.twitter_url} />
                         </div>
                         <div className="md:flex-grow">
                             <FloatingLabel
@@ -628,9 +686,13 @@ export default function CreateOrEdit(props) {
                                     handleChange={onHandleChange}
                                 />
                             </FloatingLabel>
+                            <ValidationError error={errors.linkedin_url} />
                         </div>
                         <div className="md:flex-grow">
-                            <FloatingLabel forInput="github_url" value="GitHub (ex: https://github.com/seuid)">
+                            <FloatingLabel
+                                forInput="github_url"
+                                value="GitHub (ex: https://github.com/seuid)"
+                            >
                                 <InputForFloatingLabel
                                     type="url"
                                     id="github_url"
@@ -640,6 +702,7 @@ export default function CreateOrEdit(props) {
                                     handleChange={onHandleChange}
                                 />
                             </FloatingLabel>
+                            <ValidationError error={errors.github_url} />
                         </div>
                     </div>
                 </FormSection>
@@ -658,6 +721,7 @@ export default function CreateOrEdit(props) {
                                 handleChange={onHandleChange}
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.areas_pretendidas} />
                     </div>
                     <div className="flex-grow md:m-5/12">
                         <FloatingLabel
@@ -676,6 +740,7 @@ export default function CreateOrEdit(props) {
                                 handleChange={onHandleChange}
                             />
                         </FloatingLabel>
+                        <ValidationError error={errors.pretensao_salarial} />
                     </div>
                 </FormSection>
 
@@ -684,7 +749,7 @@ export default function CreateOrEdit(props) {
                         className="w-full md:w-auto justify-center"
                         processing={processing}
                     >
-                        {data.id ? 'Atualizar' : 'Salvar'}
+                        {data.id ? "Atualizar" : "Salvar"}
                     </Button>
                 </div>
             </form>
