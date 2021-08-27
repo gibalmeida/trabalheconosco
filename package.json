@@ -29,6 +29,6 @@
         "tailwindcss": "^2.2.7"
     },
     "dependencies": {
-        "classnames": "^2.3.1"
+        "react-hot-toast": "^2.1.1"
     }
 }

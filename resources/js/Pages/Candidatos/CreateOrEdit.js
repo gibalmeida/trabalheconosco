@@ -10,12 +10,11 @@ import SelectEstadoCivil from "@/Components/SelectEstadoCivil";
 import Checkbox from "@/Components/Checkbox";
 import React, { useEffect } from "react";
 import ValidationErrors from "@/Components/ValidationErrors";
-import { InertiaLink } from "@inertiajs/inertia-react";
 import { useForm } from "@inertiajs/inertia-react";
 import TextAreaForFloatingLabel from "@/Components/TextAreaForFloatingLabel";
 
 export default function CreateOrEdit(props) {
-    const { auth, candidato } = props;
+    const { candidato } = props;
     const { data, setData, post, put, processing, errors, reset } = useForm({
         nome: '',
         data_de_nascimento: '',
