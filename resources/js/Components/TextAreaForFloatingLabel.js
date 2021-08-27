@@ -25,7 +25,7 @@ export default function TextAreaForFloatingLabel({
             name={name}
             value={value}
             className={
-                `peer block w-full h-24` +
+                `peer block w-full h-24 pt-4 ` +
                 (className ? className : '')
             }
             ref={input}
