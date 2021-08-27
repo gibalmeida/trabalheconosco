@@ -404,9 +404,10 @@ export default function CreateOrEdit(props) {
                                 type="text"
                                 id="conjuge"
                                 name="conjuge"
-                                value={data.conjuge}
+                                value={(data.estado_civil == 'casado') ? data.conjuge : ''}
                                 placeholder="Nome do Conjuge"
                                 handleChange={onHandleChange}
+                                disabled={(data.estado_civil == "casado") ? "" : "disabled"}
                             />
                         </FloatingLabel>
                     </div>
@@ -434,9 +435,10 @@ export default function CreateOrEdit(props) {
                                 <InputForFloatingLabel
                                     id="necessidades_especiais"
                                     name="necessidades_especiais"
-                                    value={data.necessidades_especiais}
+                                    value={(data.portador_de_necessidades_especiais) ? data.necessidades_especiais : ''}
                                     placeholder="Especifique as necessidades especiais"
                                     handleChange={onHandleChange}
+                                    disabled={(data.portador_de_necessidades_especiais) ? "" : "disabled"}
                                 />
                             </FloatingLabel>
                         </div>
@@ -465,9 +467,10 @@ export default function CreateOrEdit(props) {
                             <InputForFloatingLabel
                                 id="parente_nome"
                                 name="parente_nome"
-                                value={data.parente_nome}
+                                value={(data.parente_na_empresa) ? data.parente_nome : ''}
                                 placeholder="Nome do parente que trabalha na empresa"
                                 handleChange={onHandleChange}
+                                disabled={(data.parente_na_empresa) ? "" : "disabled"}
                             />
                         </FloatingLabel>
                     </div>
@@ -480,9 +483,10 @@ export default function CreateOrEdit(props) {
                             type="text"
                             id="tipo_parentesco"
                             name="tipo_parentesco"
-                            value={data.tipo_parentesco}
+                            value={(data.parente_na_empresa) ? data.tipo_parentesco : ''}
                             placeholder="Tipo de Parentesco (pai, mãe, irmão(ã), etc.)"
                             handleChange={onHandleChange}
+                            disabled={(data.parente_na_empresa) ? "" : "disabled"}
                         />
                     </div>
                     <div className="flex-grow w-full">
@@ -506,9 +510,10 @@ export default function CreateOrEdit(props) {
                             <InputForFloatingLabel
                                 id="conhecidos_nomes"
                                 name="conhecidos_nomes"
-                                value={data.conhecidos_nomes}
+                                value={(data.conhecidos_na_empresa) ? data.conhecidos_nomes : ''}
                                 placeholder="Pessoas que trabalham na empresa e lhe conhece bem"
                                 handleChange={onHandleChange}
+                                disabled={(data.conhecidos_na_empresa) ? "" : "disabled"}
                             />
                         </FloatingLabel>
                     </div>

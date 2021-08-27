@@ -13,7 +13,8 @@ export default function InputForFloatingLabel({
     handleChange,
     min,
     max,
-    step
+    step,
+    disabled,
 }) {
     const input = useRef();
 
@@ -41,6 +42,7 @@ export default function InputForFloatingLabel({
             min={min}
             max={max}
             step={step}
+            disabled={disabled}
         />
     );
 }

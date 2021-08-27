@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 
 class CandidatoUpdateRequest extends FormRequest
 {
@@ -14,6 +15,29 @@ class CandidatoUpdateRequest extends FormRequest
     public function authorize()
     {
         return true;
+    }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+
+        if ($this->input('estado_civil') != 'casado') {
+            $this->merge(['conjuge' => null]);
+        }
+        if ($this->input('portador_de_necessidades_especiais') == 0) {
+            $this->merge(['necessidades_especiais' => null]);
+        }
+        if ($this->input('parente_na_empresa') == 0) {
+            $this->merge(['parente_nome' => null, 'tipo_parentesco' => null ]);
+        }
+        if ($this->input('conhecidos_na_empresa') == 0) {
+            $this->merge(['conhecidos_nomes' => null]);
+        }
+        // error_log($this->dump());
     }
 
     /**
@@ -38,11 +62,11 @@ class CandidatoUpdateRequest extends FormRequest
             'residencia_cep' => ['required', 'string', 'regex:/^[0-9]{2}\.[0-9]{3}-[0-9]{3}$/i'],
             'telefone_principal' => ['required', 'string', 'min:8', 'max:15'],
             'telefone_principal' => ['nullable', 'string', 'min:8', 'max:15'],
-            'habilitacao_cat_a' => [ 'nullable'],
-            'habilitacao_cat_b' => [ 'nullable'],
-            'habilitacao_cat_c' => [ 'nullable'],
-            'habilitacao_cat_d' => [ 'nullable'],
-            'habilitacao_cat_e' => [ 'nullable'],
+            'habilitacao_cat_a' => ['nullable'],
+            'habilitacao_cat_b' => ['nullable'],
+            'habilitacao_cat_c' => ['nullable'],
+            'habilitacao_cat_d' => ['nullable'],
+            'habilitacao_cat_e' => ['nullable'],
             'veiculo_proprio' => ['required', 'string'],
             'estado_civil' => ['required', 'string'],
             'qtde_filhos' => ['nullable', 'integer'],
@@ -54,16 +78,16 @@ class CandidatoUpdateRequest extends FormRequest
             'tipo_parentesco' => ['required_unless:parente_na_empresa,false'],
             'conhecidos_na_empresa' => ['nullable'],
             'conhecidos_nomes' => ['required_unless:conhecidos_na_empresa,false'],
-            'auto_descricao_personalidade' => [ 'nullable'],
-            'porque_trabalhar_aqui' => [ 'nullable'],
-            'outras_informacoes' => [ 'nullable'],
-            'facebook_url' => [ 'nullable'],
-            'instagram_url' => [ 'nullable'],
-            'twitter_url' => [ 'nullable'],
-            'linkedin_url' => [ 'nullable'],
-            'github_url' => [ 'nullable'],
-            'areas_pretendidas' => [ 'nullable'],
-            'pretensao_salarial' => [ 'nullable']            
+            'auto_descricao_personalidade' => ['nullable'],
+            'porque_trabalhar_aqui' => ['nullable'],
+            'outras_informacoes' => ['nullable'],
+            'facebook_url' => ['nullable'],
+            'instagram_url' => ['nullable'],
+            'twitter_url' => ['nullable'],
+            'linkedin_url' => ['nullable'],
+            'github_url' => ['nullable'],
+            'areas_pretendidas' => ['nullable'],
+            'pretensao_salarial' => ['nullable']
         ];
     }
 }
