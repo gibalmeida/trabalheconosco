@@ -11,14 +11,8 @@ export default function Dashboard(props) {
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 bg-white border-b border-gray-200">Você entrou!</div>
+                        <div className="p-6 bg-white border-b border-gray-200">Vagas disponíveis!</div>
                     </div>
-                </div>
-            </div>
-            <div className="">
-                <div className="bg-white shadow-lg rounded-lg">
-                    <div className="bg-white border-b border-gray-200 text-4xl">Vagas disponíveis!</div>
-
                 </div>
             </div>
         </Authenticated>
